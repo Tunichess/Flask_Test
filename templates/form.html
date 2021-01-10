@@ -1,0 +1,53 @@
+{% extends 'base.html'%}
+{% block title %}Form{% endblock %}
+
+
+{% block content %}
+{{ super() }}
+        <h1>Test Flask</h1>
+        <form method="POST" action="" >
+            <div class="container">
+            <div class="row">
+                <div class='col-12 col-sm-4'>
+                    <label for="nbr">How many balls do you want to put in the jar?</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class='col-12 col-sm-2'>
+                    <input type="number" class="form-control form-control-lg" style="text-align: center;" min="0" max="50" name="nbr" value=0 >
+                </div>
+            </div>
+            <div class="row">
+                <div class='col-12 col-sm-4'>
+                    <label for="nbr">Color of the balls:</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class='col-12 col-sm-2'>
+                    <input type="color" class="form-control" name="color" value="#ff0000">
+                </div>
+            </div>
+            <br>
+            <input type="submit" class="btn btn-secondary btn-lg" value="Display">
+
+            </div>
+        </form>
+        <div style="  position: absolute; left:830 ; top:  {{ tops }};">
+            {% for x in listnbr3 %}
+            <span style="background-color: #0000" class="dot"></span>
+            {% endfor %}
+            {% for x in listnbr2 %}
+            <span style="background-color: {{ color }}" class="dot"></span>
+            {% endfor %}
+
+            {% for x in listnbr %}
+            {% if(x % 7 == 0) %}
+            <br>
+            {% endif %}
+            <span style="background-color: {{ color }}" class="dot"></span>
+            {% endfor %}
+        </div>
+        <img src="{{ url_for('static', filename='Arrow.png')}}" style=" width: 150px ; position: absolute;   top: 300px; left: 600px;"> 
+
+{% endblock %} 
+
